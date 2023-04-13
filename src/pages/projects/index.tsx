@@ -1,16 +1,7 @@
 
+import { getProjects, Project } from "@/lib/projects";
 import Head from "next/head";
 import Link from "next/link";
-
-export interface Project {
-    name: string,
-    description: string,
-    repo?: string,
-    url?: string,
-    languages: string[],
-    frameworks: string[],
-    skills: string[],
-}
 
 export default function Projects(props: Record<string, Project>) {
   return (
@@ -36,8 +27,8 @@ export default function Projects(props: Record<string, Project>) {
   );
 }
 
-export async function getStaticProps(): Promise<Record<string, Project>> {
+export async function getStaticProps() {
   return {
-    props: await (await fetch('http://localhost:3000/projects.json')).json()
+    props: await getProjects(),
   };
 }

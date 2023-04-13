@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Project } from ".";
+import { Project, getProjects } from "@/lib/projects";
 
 export default function ProjectPage(p: Project) {
   return (
@@ -31,17 +31,14 @@ export default function ProjectPage(p: Project) {
 export async function getStaticProps(
   { params }: { params: { id: string } }
 ) {
-  const req = await fetch('http://localhost:3000/projects.json');
-  const projects: Record<string, Project> = await req.json();
+  const projects = await getProjects();
   return {
     props: projects[params.id],
   };
 }
 
 export async function getStaticPaths() {
-  const req = await fetch('http://localhost:3000/projects.json');
-  const projects: Record<string, Project> = await req.json();
-
+  const projects = await getProjects();
   const paths = Object.keys(projects).map(id => {
     return { params: { id } };
   });
