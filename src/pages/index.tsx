@@ -19,8 +19,8 @@ export default function Home() {
         <h1>Hello world!</h1>
         <h2>I&apos;m Miguel</h2>
         <p>
-          This is my website, where I&apos;ll eventually have cool things like
-          show off my projects and stuff.
+          This is my personal website, where I&apos;ll eventually have cool
+          things like show off my projects and stuff.
         </p>
         <p>
           It&apos;s pretty bare-bones for now, but I&apos;ll be fleshing it out
